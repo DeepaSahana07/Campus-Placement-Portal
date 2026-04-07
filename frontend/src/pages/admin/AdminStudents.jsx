@@ -132,7 +132,7 @@ const AdminStudents = () => {
                       </td>
                       <td className="px-5 py-4">
                         {s.resume_url ? (
-                          <a href={import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL}${s.resume_url}` : `http://localhost:5000${s.resume_url}`} 
+                          <a href={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${s.resume_url}`} 
                              target="_blank" rel="noopener noreferrer" 
                              className="flex items-center gap-1.5 text-primary hover:underline font-medium">
                             <ExternalLink className="h-4 w-4" /> View PDF
