@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+dist/
+build/
+.DS_Store
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Local uploads
+backend/uploads/resumes/
+backend/uploads/images/
