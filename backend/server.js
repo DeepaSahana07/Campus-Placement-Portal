@@ -17,9 +17,15 @@ app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log('MongoDB connected'))
-  .catch(err => console.error('MongoDB connection error:', err));
+mongoose.connect(process.env.MONGODB_URI, {
+  serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
+  socketTimeoutMS: 45000, // Close sockets after 45s
+})
+  .then(() => console.log('✅ MongoDB connected successfully'))
+  .catch(err => {
+    console.error('❌ MongoDB connection error:', err.message);
+    console.error('Ensure MONGODB_URI is set in Render and IP is whitelisted in Atlas.');
+  });
 
 app.use('/api/auth', authRoutes);
 app.use('/api/profiles', profileRoutes);
